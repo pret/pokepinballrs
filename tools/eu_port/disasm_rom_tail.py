@@ -36,11 +36,136 @@ SEGS = [(0x0000, 0x1000, RES_RUN, 'RomTail', 'RES'),
         (0x3000, END, OVL_RUN, 'RomTailOv3', 'OV3')]
 
 # code that nothing in the block reaches (offset: Thumb)
-EXTRA_CODE = {0x003C: False,     # nop after the first ARM function
-              0x009C: True,      # leaf function: sets a halfword to 1 and waits for it to clear
+EXTRA_CODE = {0x009C: True,      # leaf function: sets a halfword to 1 and waits for it to clear
               0x06D8: False,     # leaf function: reads 8 halfwords
               0x12AA: True,      # stubs: ldr r1, =x; bx r1
               0x3058: True}
+
+# Names of code and data (offset in the block: name), from what the code does; the other labels
+# are named after their run address. Labels inside DATA_REGIONS are written as name + offset.
+NAMES = {
+    0x0000: 'MonDebugVectors', 0x0010: 'MonEntryCommandLoop', 0x0012: 'MonEntryCommandDone',
+    0x0014: 'MonResume', 0x0020: 'MonResume_Arm', 0x0040: 'MonException', 0x0050: 'MonException_Thumb',
+    0x0060: 'MonCommandLoop', 0x0078: 'MonCommandDone', 0x009C: 'MonUnused_WaitFlag',
+    0x00B0: 'MonCommandBlock', 0x0100: 'MonSavedRegisters', 0x0180: 'MonSavedHeader9C',
+    0x0184: 'MonExceptionFrame', 0x0190: 'MonSavedDmaControl', 0x0198: 'MonStack',
+    0x0274: 'MonCommandTable', 0x02A4: 'MonCmd10_CallUserHook', 0x02AC: 'MonCmd11_CallUserHookN',
+    0x02B4: 'MonCmd4_IdentifyFlash', 0x02BC: 'MonCmd5_EraseFlash', 0x02C4: 'MonCmd9_FillMemory',
+    0x02D0: 'MonCmd1_ResetGame', 0x02E8: 'MonCmd3_Resume', 0x02F0: 'MonCmd2_TransferMemory',
+    0x0408: 'MonCmd7_Step', 0x0428: 'MonExceptionKinds', 0x0438: 'MonException_Arm',
+    0x04F4: 'MonAfterException', 0x050E: 'MonDispatchCommand', 0x0528: 'MonCallOverlay',
+    0x0550: 'MonCallOverlay_Thumb', 0x05CC: 'MonSetControl', 0x05E8: 'MonFinishCommand',
+    0x05FC: 'MonCmd6_ProgramFlash', 0x06AC: 'MonCmd8_SetControl', 0x06D8: 'MonUnused_UnlockReads',
+    0x0FFE: 'MonControl',
+    0x1000: 'MonOv1_Entries', 0x101C: 'MonOv1_Step', 0x1044: 'MonOv1_SaveState', 0x12A8: 'MonOv1_Hang',
+    0x12AA: 'MonOv1_Unused_Return', 0x12AE: 'MonOv1_ResetGame', 0x1344: 'MonOv1_Resume',
+    0x14CC: 'MonOv1_Return', 0x1554: 'MonOv1_ArmShiftedRegister', 0x1688: 'MonOv1_CheckCondition',
+    0x1768: 'MonOv1_NextThumbPc', 0x197C: 'MonOv1_NextArmPc', 0x1D40: 'MonOv1_SetStepBreakpoint',
+    0x1DDC: 'MonOv1_EndStep', 0x1EA4: 'MonOv1_CancelStep',
+    0x2000: 'MonOv2_Entries', 0x2014: 'MonOv2_SetControl', 0x2028: 'MonOv2_Delay',
+    0x2038: 'MonOv2_IdentifyFlash', 0x2070: 'MonOv2_IdentifyFlash_AfterUnlock', 0x20A4: 'MonOv2_Return',
+    0x20B8: 'MonOv2_UnlockReads', 0x20E4: 'MonOv2_EraseFlash', 0x2100: 'MonOv2_FillMemory',
+    0x211C: 'MonOv2_DoIdentifyFlash', 0x2250: 'MonOv2_EraseFlashBottomBoot',
+    0x2380: 'MonOv2_EraseFlashTopBoot', 0x24B4: 'MonOv2_DoFillMemory', 0x2614: 'MonOv2_DoEraseFlash',
+    0x2638: '__MonOv2_DoIdentifyFlash_from_arm', 0x2644: '__MonOv2_DoEraseFlash_from_arm',
+    0x2650: '__MonOv2_DoFillMemory_from_arm',
+    0x3000: 'MonOv3_Entries', 0x3008: 'MonOv3_CallUserHook', 0x302C: 'MonOv3_CallUserHookN',
+    0x3058: 'MonOv3_Unused_Return', 0x305C: 'MonOv3_Return',
+}
+OVERLAYS = {1: 'reset, resume, single step', 2: 'flash memory, memory fill', 3: 'calls to the game'}
+DATA_REGIONS = {0x00B0: 0x50, 0x0100: 0x70, 0x0180: 4, 0x0184: 4, 0x0190: 8, 0x0198: 0xD0, 0x0274: 0x30,
+                0x0428: 12, 0x0FFE: 2}
+
+COMMENTS = {
+    0x0000: ['The BIOS forwards the FIQ and undefined instruction exceptions here (the debugging',
+             'handler of a 1 Mbit DACS) when bits 2 and 7 of the header byte at 0x0800009C are set.'],
+    0x0010: ['Entry points for the overlays: their functions return through MonEntryCommandDone',
+             'with lr = MonEntryCommandLoop.'],
+    0x0014: ['Return to the game: WAITCNT = r0, then r0 and r1 of MonSavedRegisters and bx lr.'],
+    0x0040: ['Exception entry: saves r0-r3 and WAITCNT, sets WAITCNT to 0, then MonException_Arm.'],
+    0x0060: ['Sets bit 15 of the state (MonCommandBlock + 0x12), waits until the host has cleared the',
+             'done flag and has written a command, then runs it.'],
+    0x0078: ['Done flag = 1, command = 0.'],
+    0x009C: ['Not referenced: sets the halfword at MonCommandBlock + 0x48 and waits for the host to',
+             'clear it.'],
+    0x00B0: ['Shared with the host: +0x00 command, +0x02 parameter, +0x04 size, +0x08 address,',
+             '+0x0C result, +0x10 done flag, +0x12 state (exception kind, bit 15: waiting for a',
+             'command), +0x14 last command, +0x1A progress code, +0x1C WAITCNT of the game,',
+             '+0x20 r0-r3 at the exception, +0x30 step range, +0x38 instruction replaced by the step',
+             'breakpoint, +0x3C its address, +0x40 step flags, +0x44 IME of the game.'],
+    0x0100: ['r0-r15, CPSR, then sp, lr and SPSR of the IRQ, supervisor and abort modes.'],
+    0x0180: ['Header byte 0x9C of the game, restored at each exception.'],
+    0x0184: ['sp at the exception: the frame of the BIOS handler has the SPSR at +0 and the return',
+             'address at +0x0C.'],
+    0x0190: ['DMA0-3 control registers of the game (DMA is stopped while the monitor runs).'],
+    0x0198: ['Stack of the monitor, down from MonStack + 0xD0 (filled with 0xAA, with two leftover',
+             'words at its top).'],
+    0x0274: ['Handlers of the commands 0-11 (command 0 is none).'],
+    0x02A4: ['The command handlers: MonCallOverlay with r1 = overlay << 8 | entry.'],
+    0x02D0: ['Clears the halfword at +0x48 and the word at +0x4C, then MonOv1_ResetGame.'],
+    0x02F0: ['Copies the size (+0x04) bytes between the address (+0x08) and the buffer at 0x09FE3000',
+             '(control 0x3F): parameter 0 reads the memory of the game, else writes it. WAITCNT is',
+             'replaced by its saved value; SRAM (0x0E000000) is read and written by bytes.'],
+    0x0408: ['Saves IME and disables interrupts, then MonOv1_Step.'],
+    0x0428: ['Exception kind by CPU mode (bits 0-3): FIQ 0, abort 2, undefined instruction 3.'],
+    0x0438: ['Saves r0-r3 and sp, restores the header byte, stores the exception kind, moves the return',
+             'address back to the breakpoint (2 or 4 bytes), then MonOv1_SaveState and MonAfterException.'],
+    0x04F4: ['MonOv1_EndStep, then resumes the game if it steps through a range (step flag 8), else',
+             'waits for a command.'],
+    0x050E: ['Runs the command in MonCommandBlock (1-11, else waits for another one).'],
+    0x0550: ['Thumb entry of MonCallOverlay.'],
+    0x0528: ['r1 = overlay << 8 | entry: selects the overlay at 0x09FE3000 (control 0x20 | overlay)',
+             'and jumps to its entry with r0 = MonCommandBlock.'],
+    0x05CC: ['Writes r1 | 0x20 to MonControl.'],
+    0x05E8: ['Marks the command as done and waits for the next one.'],
+    0x05FC: ['Programs 0x800 bytes of flash at the address (+0x08) from the buffer at 0x09FE3000,',
+             'by halfwords (command 0x40, status 0x70); a failed status goes to the result (+0x0C).'],
+    0x06AC: ['Control 0xE0 (parameter != 0) or 0xA0.'],
+    0x06D8: ['Not referenced: reads 8 halfwords at 0x09FE1FE0 (see MonOv2_UnlockReads).'],
+    0x0FFE: ['Control register of the DACS: bits 0-4 select the page seen at 0x09FE3000 (1-3: the',
+             'overlays, 0x1F: the buffer of MonCmd2_TransferMemory).'],
+    0x101C: ['Sets a breakpoint on the next instruction and resumes the game, or reports an error.'],
+    0x1044: ['Saves the registers of every mode and the DMA control registers, and stops DMA.'],
+    0x12AE: ['Resets the IO registers and the saved registers, to start the game at 0x08000000 in',
+             'system mode with the stack pointers of the BIOS.'],
+    0x12A8: ['Entry 0: endless loop.'],
+    0x12AA: ['Not referenced: back to the monitor.'],
+    0x14CC: ['Back to the monitor: MonEntryCommandDone with lr = MonEntryCommandLoop.'],
+    0x1344: ['Restores the registers and DMA, enables the debugging handler (header byte 0x9C =',
+             '0xA5) and returns to the game through MonResume.'],
+    0x1554: ['Value of the shifted register operand of an ARM instruction.'],
+    0x1688: ['Whether the condition r0 (0-14) holds for the saved CPSR.'],
+    0x1768: ['Address of the instruction that runs after the Thumb instruction at r0.'],
+    0x197C: ['Address of the instruction that runs after the ARM instruction at r0.'],
+    0x1D40: ['Replaces the next instruction with an undefined one (0xE7FFFFFF or 0xEFFF); returns 1',
+             'if the memory took it.'],
+    0x1DDC: ['After an exception: puts back the instruction replaced by the step breakpoint, steps',
+             'again while the pc is in the step range, else restores IME.'],
+    0x1EA4: ['Restores IME and clears the step flags.'],
+    0x2014: ['Writes r1 | 0x22 to MonControl.'],
+    0x2028: ['Waits 0x4000 loops.'],
+    0x2038: ['Control 0x40, runs MonOv2_UnlockReads from EWRAM, then MonOv2_DoIdentifyFlash.'],
+    0x20A4: ['Back to the monitor: MonEntryCommandDone with lr = MonEntryCommandLoop.'],
+    0x20E4: ['Control 0x40, then MonOv2_DoEraseFlash.'],
+    0x2100: ['MonOv2_DoFillMemory.'],
+    0x2638: ['ARM to Thumb veneers made by the linker.'],
+    0x20B8: ['Copied to 0x02000000 and run there: reads 8 halfwords at 0x09FE1FE0.'],
+    0x211C: ['Reads the identifier of the flash chips (command 0x90, Sharp 0xB0).'],
+    0x2250: ['Erases the flash from 0x08000000 chip by chip (up to 8), for the size (+0x04) in 64 KB',
+             'units: block erase (0x20, 0xD0) of 8 blocks of 8 KB, then of 64 KB blocks. Stops on an',
+             'error status (stored at +0x0C) or if the host sets +0x18.'],
+    0x2380: ['Same, with the 64 KB blocks first and the 8 KB blocks at the end of each chip.'],
+    0x24B4: ['Fills memory from the address (+0x08) with the parameter byte (+0x02); the size is the',
+             'word at +0x14, where MonDispatchCommand also writes the command number. SRAM is written by',
+             'bytes. Stops if the host sets +0x18.'],
+    0x2614: ['Parameter 0: MonOv2_EraseFlashBottomBoot, 1: MonOv2_EraseFlashTopBoot.'],
+    0x3008: ['Writes the monitor address and 3 at 0x03000000, then calls the function at the address',
+             'stored at 0x03000018 by the game.'],
+    0x3058: ['Not referenced: back to the monitor.'],
+    0x305C: ['Back to the monitor: MonEntryCommandDone with lr = MonEntryCommandLoop and r0 =',
+             'MonCommandBlock.'],
+    0x302C: ['Same, calling the function at the address stored at 0x03000010 + 4 * parameter.'],
+}
 
 ARM = Cs(CS_ARCH_ARM, CS_MODE_ARM); ARM.detail = True
 THUMB = Cs(CS_ARCH_ARM, CS_MODE_THUMB); THUMB.detail = True
@@ -189,11 +314,16 @@ def classify():
         if not found:
             break
     for o, (th, sz, ins, t, p) in list(c.ins.items()):
-        # Thumb nop (mov r8, r8) that aligns a literal pool after a function
+        # nops after a function: Thumb mov r8, r8 before a literal pool, ARM mov r0, r0 before the
+        # next function at an 8-byte boundary
         e = o + sz
         if th and e % 4 == 2 and e + 2 <= END and half(e) == 0x46C0 and not c.owner(e) and c.owner(e + 2):
             c.add(e, True)
+        elif not th and e % 8 == 4 and e + 4 <= END and word(e) == 0xE1A00000 and not c.owner(e) and c.owner(e + 4):
+            c.add(e, False)
+    starts = set(c.starts)
     c.walk()
+    c.starts = starts      # no labels for the nops
     return c
 
 
@@ -236,12 +366,17 @@ HEADER = '''\
 @ Leftover block at the end of the European ROM (generated by tools/eu_port/disasm_rom_tail.py),
 @ followed by 0xFF padding up to 0x08FFF000 and 0x800 zero bytes. The US ROM is 8 MiB and has
 @ none of this, and the game never references it.
-@ It is a development tool, probably a debug monitor: it saves the registers of every CPU mode
-@ and uses the interrupt, wait state and serial (RCNT) registers. It is linked to run near the
-@ end of a 32 MiB cartridge, not where it is in this ROM: a resident part (the first 4 KB) at
-@ 0x09FE2000 and three overlays (the following 4 KB pages) at 0x09FE3000, each starting with a
-@ table of entry points. ARM code at the start jumps to a stub that calls the Thumb code.
-@ Labels are named after their run address; "label - RES" (or OV1, OV2, OV3) is that address.
+@ It is a debug monitor for the development hardware, linked to run from the memory of a 1 Mbit
+@ DACS at 0x09FE0000, not where it is in this ROM. The BIOS forwards the FIQ and undefined
+@ instruction exceptions to 0x09FE2000 when the cartridge header enables it; the monitor then
+@ saves the state of the game and runs the commands that the host writes to MonCommandBlock:
+@ read or write memory (through a buffer at 0x09FE3000), single step (with a breakpoint made of
+@ an undefined instruction), resume, reset the game, identify, erase and program flash memory,
+@ fill memory, call functions of the game.
+@ It is made of a resident part (the first 4 KB) at 0x09FE2000 and three overlays (the following
+@ 4 KB pages) that its control register (MonControl) maps at 0x09FE3000; each overlay starts
+@ with a table of entry points. The names come from what the code does; the other labels are
+@ named after their run address, and "label - RES" (or OV1, OV2, OV3) is that address.
 '''
 INST_NOTE = '''\
 @ Instructions that GNU as encodes differently (or not at all) are written with .inst.
@@ -255,8 +390,18 @@ FLOW_END = re.compile(r'^(b|bx)$')
 
 
 def label(o):
+    if o in NAMES:
+        return NAMES[o]
     s = SEGS[seg(o)]
     return '%s_%08X' % (s[3], run(o))
+
+
+def region(t, end=False):
+    """Start of the data region that holds offset t (not at its start; or at its end), else None."""
+    return next((r for r, n in DATA_REGIONS.items() if r < t < r + n or (end and t == r + n)), None)
+
+
+REFERENCED = set()       # offsets loaded by instructions or branched to (set by generate)
 
 
 def word_text(o):
@@ -265,7 +410,9 @@ def word_text(o):
     t = internal(v, o)
     if t is None:
         return '0x%08X' % v
-    return '%s - %s%s' % (label(t & ~1), SEGS[seg(t)][4], ' + 1' if v & 1 else '')
+    r = region(t, end=t not in REFERENCED and t not in NAMES)
+    name = '%s + 0x%X' % (label(r), t - r) if r is not None else label(t & ~1)
+    return '%s - %s%s' % (name, SEGS[seg(t)][4], ' + 1' if v & 1 else '')
 
 
 def is_pointer(c, o):
@@ -331,6 +478,8 @@ def generate(c, inst):
     for o, (th, sz, ins, t, p) in c.ins.items():
         if t is not None: labels.add(t)
         if p is not None: labels.add(p)
+    REFERENCED.clear()
+    REFERENCED.update(labels)
     for t, n in c.tables.items():
         labels.add(t)
     for o in range(0, END - 3, 4):
@@ -338,6 +487,11 @@ def generate(c, inst):
         if t is not None and (o in c.pool or c.in_table(o) or not c.owner(o)):
             labels.add(t & ~1)
     labels |= c.starts
+    labels -= {4, 8, 12}      # the other vectors
+    labels |= set(NAMES)
+    labels = {l for l in labels if region(l, end=l not in REFERENCED and l not in NAMES) is None}
+    for o in NAMES:
+        assert o in c.ins or o in DATA_REGIONS or o in c.tables or o in c.pool or o in (0x1000, 0x2000, 0x3000), hex(o)
     entries = {o for o in c.ins if o in labels}
     for l in labels:
         if c.owner(l) and l not in c.ins and l not in c.pool and l not in c.tables:
@@ -352,11 +506,13 @@ def generate(c, inst):
                 lines += ['@ resident part, runs at 0x%08X' % RES_RUN, '', 'gUnusedRomTailCode:: @ 0x%08X' % ROM_ADDR,
                           '\t.set RES, gUnusedRomTailCode - 0x%08X' % RES_RUN]
             else:
-                lines += ['', '@ overlay %d (0x%08X), runs at 0x%08X' % (k, ROM_ADDR + o, OVL_RUN), '',
+                lines += ['', '@ overlay %d (0x%08X), runs at 0x%08X: %s' % (k, ROM_ADDR + o, OVL_RUN, OVERLAYS[k]),
+                          '', '@ entry points, by the entry number of MonCallOverlay',
                           '%s:' % label(o), '\t.set %s, %s - 0x%08X' % (SEGS[k][4], label(o), OVL_RUN)]
         if o in labels and not (k and o == SEGS[k][0]):
-            if o in entries and lines[-1] != '':
+            if (o in entries or o in COMMENTS or o in NAMES) and lines[-1] != '':
                 lines.append('')
+            lines += ['@ ' + t for t in COMMENTS.get(o, [])]
             lines.append('%s:' % label(o))
         if o in c.ins:
             th = c.ins[o][0]
