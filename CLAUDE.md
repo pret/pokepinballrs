@@ -8,18 +8,22 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
 - `make compare_eu` ricostruisce la ROM EU **identica byte per byte**
   (SHA1 `b8b7881eaa9856b5ada99078ad1053d31cb79827`).
 - `make compare` (USA) resta identica: ogni modifica EU è dentro `#ifdef EUROPE`.
-- Codice: 848/848 funzioni corrispondenti. 846 in C, 2 usano l'assembly originale nella
+- Codice: 848/848 funzioni corrispondenti. 847 in C, 1 usa l'assembly originale nella
   build EU (C conservato sotto `NONMATCHING`):
-  - `LoadTitlescreenGraphics` (titlescreen.c): scambio r0/r1 nello store di
-    `gMain.bgOffsets[1].xOffset` (allocazione locale dei registri).
   - `RestoreMainFieldDynamicGraphics` (save_and_restore_game.c): nel caso EVO_PREVIEW il reload
     di `gMonPortraitGroupPals` usa r5 invece di r0, quindi il cross-jump unisce 3 istruzioni in
-    meno. Il registro di reload è scelto a rotazione (`last_spill_reg` in reload1.c), quindi la
-    causa può essere ovunque prima nella funzione.
+    meno. Il registro di reload è scelto a rotazione (`last_spill_reg` in reload1.c), e conta
+    anche il codice che il cross-jump fonde dopo il reload: la causa può essere ovunque prima.
+    Con decomp-permuter si arriva a 2 istruzioni diverse su 1171: indice dell'uovo in `var0`
+    prima della DMA (come nel resto della funzione) e un `gCurrentPinballGame->... += 0` in
+    fondo al caso ROULETTE_WHEEL (come il `ball += 0` della versione USA); resta il registro di
+    reload di r9 all'inizio del caso EVO_PREVIEW (r0 invece di r5).
   Risolte: `EndOfBallBonusSummary` (logica EU riscritta: indice lingua, glifi, tabelle),
   `Draw{Ruby,Sapphire}ModeTimerDisplay` (dimensione per lingua del 3° blocco di tile "saver"),
   `UpdateSapphireHatchMachine` (in EU il setup del banner è in un `do { } while (0)`, che chiude
-  il blocco CSE: macro `BANNER_SETUP_BEGIN/END`).
+  il blocco CSE: macro `BANNER_SETUP_BEGIN/END`), `LoadTitlescreenGraphics` (le copie DMA comuni
+  sono ripetute in entrambi i rami del test sul salvataggio, come in USA, e il compilatore le
+  fonde: la ripetizione cambia l'allocazione dei registri).
 - Dati: `data/eu/*.s` sono **generati** dai sorgenti dati USA allineati alla ROM EU.
   I dati solo-EU sono in forma sorgente dove possibile:
   - `data/eu/src/pokedex_entries.inc`: Pokédex EU (205 voci, 5 lingue) con `.dexLang`;
@@ -38,13 +42,13 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
     scritte con i file USA;
   - sprite set solo-EU di rom_2 scritti con `packed_sprite_oam(l)` come in USA; tabelle solo-EU
     di rom_2 con il tipo degli elementi della dichiarazione C (`.byte`/`.2byte`/`.4byte`).
-  Restano ~16 KB in `data/eu/bin/` (3 file): la coda della ROM (0x08FE0000, 16 KB, non
-  referenziata), 64 byte (2 tile in più di `gRubyShopSignMartPiece1` inglese, che in EU ha 8 tile
-  invece di 6; l'elemento USA è allineato e il resto finisce in un blob) e 32 byte di riempimento
-  dopo la riga 3 del saver Ruby inglese. In rom_2 restano ~355 righe `.byte`: soprattutto script
-  di animazione (contatore e coppie fotogramma/durata) dopo sprite set copiati per lingua, la cui
-  struttura non è nota (in USA la regione corrispondente è scritta, a torto, come sprite set
-  `gPackedOamDup_*`/`gUnusedSpriteSets_6A9FC0`), e piccole tabelle senza dichiarazione C.
+  In `data/eu/bin/` resta solo la coda della ROM (0x08FE0000, 16 KB): uno strumento di sviluppo
+  non referenziato, descritto in `data/eu/rom_tail.s`. In rom_2 restano ~89 righe `.byte`
+  (piccole tabelle senza dichiarazione C, la fine spezzata di una copia "Dup" in
+  `gUnknown_0895A03C`). Le copie per lingua dei dati sprite non usati (regioni `gSpriteSetRawDup_`
+  USA, mai referenziate dal codice) sono scritte come sprite set seguiti da animazioni: contatore
+  e coppie (fotogramma, durata). In USA la stessa struttura è scritta, a torto, come sprite set
+  (`gPackedOamDup_*`, `gUnusedSpriteSets_*`).
   Nelle tabelle solo-EU di rom_2 i puntatori sono simbolici; le etichette nuove sono
   `gUnknown_<indirizzo EU>` o, dove ricavabile, `<nome USA>_<Lingua>`; nomi aggiunti a mano
   in `tools/eu_port/data/extra_names.json` (es. pezzi del cartello del negozio Ruby).
@@ -101,10 +105,13 @@ Su Windows (MSYS2) usare il `jq` di msys, non quello mingw (scrive CRLF e rompe
   `gen_eu_data.py` include al posto dei byte: i file `data/eu/src/*.inc` con una riga
   `@ eu_range INIZIO FINE` (possono definire etichette interne con `::` o `.set`), e la grafica
   elencata in `tools/eu_port/data/eu_graphics.json`. Scrive anche gli sprite set di rom_2 con le
-  macro (anche sequenze di set, fino al primo puntatore), le tabelle solo-EU con un tipo scalare
-  nella dichiarazione C (`C_TYPES`), `.space` per gli intervalli nulli senza etichetta, e l'elenco
-  dei blob in `data/eu_blobs.json` (generato, ignorato da git). Una voce di `eu_graphics.json` che
-  contiene un'etichetta aggiunta dopo viene scartata (il blob torna a `gfx_eu.py`).
+  macro (anche sequenze di set e set seguiti da animazioni, fino al primo puntatore), le tabelle
+  solo-EU con un tipo scalare nella dichiarazione C (`C_TYPES`), gli indirizzi VRAM con
+  l'espressione della tabella USA omonima (`BG_ADDR_FOR_BOARD_WRAP(y, x)`) o una costante
+  `BG_/OBJ_VRAM_ADDR_`, `.space` per gli intervalli nulli senza etichetta, e l'elenco dei blob in
+  `data/eu_blobs.json` (generato, ignorato da git). Una voce di `eu_graphics.json` che contiene
+  un'etichetta aggiunta dopo viene scartata (il blob torna a `gfx_eu.py`). `UNALIGNED`: elementi
+  USA da non allineare perché in EU sono più lunghi anche in inglese (diventano blob interi).
 - `gfx_eu.py` (dopo `regen.sh`, perché legge `eu_blobs.json`; poi di nuovo `regen.sh`): converte
   i blob di grafica in copie per lingua dei file USA con gbagfx e verifica il giro inverso. Abbina
   un blob all'elemento USA con lo stesso nome senza suffisso di lingua (e agli elementi USA
@@ -134,7 +141,11 @@ Attenzione: `data/eu/*.s` sono generati; modificarli a mano va bene solo se poi 
 
 ## Prossimi passi possibili
 
-1. Le 2 funzioni ancora in asm (vedi sopra): le varianti di sorgente plausibili non bastano;
-   servirebbe una ricerca automatica (decomp-permuter).
-2. Le ~355 righe `.byte` rimaste in `data/eu/rom_2.s`: capire la struttura degli script di
-   animazione copiati per lingua (e correggere di conseguenza anche le regioni `Dup` USA).
+1. `RestoreMainFieldDynamicGraphics` (vedi sopra). decomp-permuter (github.com/simonlindholm/
+   decomp-permuter) si usa con una cartella per funzione: `base.c` preprocessato con
+   `-DEUROPE -DNONMATCHING`, `target.o` assemblato dal blocco `asm_unified` della funzione
+   (etichette locali `.L`, padding come `.align 2, 0`), `compile.sh` con i flag di agbcc della
+   build. Conviene randomizzare solo la zona interessata (`PERM_RANDOMIZE`); i suoi match vanno
+   poi riletti per trovare il costrutto naturale equivalente.
+2. Riscrivere anche nel sorgente USA le regioni `Dup` come sprite set + animazioni (byte
+   identici; oggi sono scritte come sprite set fittizi).
