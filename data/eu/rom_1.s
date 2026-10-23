@@ -1233,7 +1233,10 @@ gPokedexStateFuncs:: @ 0x080638DC
 gPokedexEntries:: @ 0x08063910
 	.include "data/eu/src/pokedex_entries.inc"
 gLanguageSelectStateFuncs:: @ 0x080EC4CC
-	.byte 0x05, 0x96, 0x00, 0x08, 0x85, 0x97, 0x00, 0x08, 0x9D, 0x98, 0x00, 0x08, 0x45, 0x99, 0x00, 0x08
+	.4byte LanguageSelect_LoadGraphics
+	.4byte LanguageSelect_HandleInput
+	.4byte LanguageSelect_BlinkSelection
+	.4byte LanguageSelect_Exit
 gFieldSelectStateFuncs:: @ 0x080EC4DC
 	.4byte LoadFieldSelectGraphics
 	.4byte FieldSelect_State1_8C7C

@@ -1884,15 +1884,16 @@ gIntroScene8WailmerLaunch_SpriteSets:: @ 0x086A7C24
     .4byte gIntroWailmerStarLargeSpriteSet
 
 gIntroScene8WailmerLaunch_DebrisMovement:: @ 0x086A7C68
-	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
+	@ struct IntroDebrisMovement: earlyVelX, earlyVelY, lateVelX, lateVelY, filler4, oamPriority
+	.byte  5,  2,  3,  1,  6, 1
 	.align 2,0
-	.byte 0x05, 0xFE, 0x03, 0xFF, 0x19, 0x02
+	.byte  5, -2,  3, -1, 25, 2
 	.align 2,0
-	.byte 0xFB, 0x02, 0xFD, 0x01, 0x28, 0x01
+	.byte -5,  2, -3,  1, 40, 1
 	.align 2,0
-	.byte 0xFE, 0x05, 0xFF, 0x03, 0x34, 0x02
+	.byte -2,  5, -1,  3, 52, 2
 	.align 2,0
-	.byte 0xFE, 0xFB, 0xFF, 0xFD, 0x34, 0x01
+	.byte -2, -5, -1, -3, 52, 1
 	.align 2,0
 	.byte 0, 0, 0, 0, 0, 0
 	.align 2, 0
@@ -2962,12 +2963,13 @@ gTitlePressStartAnimDurations:: @ 0x086A9662
 	.byte 0x14, 0x05, 0x14, 0x05
 
 gTitleMenuSlideInAnimData:: @ 0x086A9666
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
+	@ sprite group, duration
+	.byte 1, 5
+	.byte 3, 5
+	.byte 1, 5
+	.byte 3, 5
+	.byte 1, 5
+	.byte 3, 5
 
 gTitleMenuSlideOutAnimSpriteGroupData:: @ 0x086A9672
 	.byte 0x00, 0x10

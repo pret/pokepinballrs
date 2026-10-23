@@ -230,7 +230,7 @@ $(DATA_ASM_BUILDDIR)/%.o: data_dep :=
 endif
 
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
-	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
+	$(PREPROC) $< charmap.txt | $(CPP) $(REGION_DEFS) -I include | $(AS) $(ASFLAGS) -o $@
 
 $(OBJ_DIR)/sym_bss.ld: $(SYM_BSS_SRC)
 	$(RAMSCRGEN) .bss $< ENGLISH > $@

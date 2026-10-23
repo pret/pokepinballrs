@@ -219,7 +219,7 @@ gEReaderTextHasNextPage:: @ 0x0893A3B5
 gEReaderCardStartPages:: @ 0x0893A400
     .byte 0x02, 0x04, 0x06, 0x09, 0x0B, 0x00
 
-	.byte 0x00, 0x00
+	.align 2, 0
 gPokedexCursorHandSpriteSet:: @ 0x0893A408
 .2byte 1
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=PAL_IX_0
@@ -3355,9 +3355,9 @@ gIntroScene1Torchic_ScaleOffsets:: @ 0x0893EBB4
 
 
 gTitleRevealJingle:: @ 0x0893EBC4
-	.2byte 168, 10, 169, 15, 170, 25, 171, 35
-	.2byte 172, 45, 173, 50, 174, 55, 175, 65
-	.2byte 175, 70, 175, 80
+	.2byte SE_PIKA_CHARGE_DO, 10, SE_PIKA_CHARGE_RE, 15, SE_PIKA_CHARGE_MI, 25, SE_PIKA_CHARGE_FA, 35
+	.2byte SE_PIKA_CHARGE_SO, 45, SE_PIKA_CHARGE_LA, 50, SE_PIKA_CHARGE_TI, 55, SE_PIKA_CHARGE_HIGH_DO, 65
+	.2byte SE_PIKA_CHARGE_HIGH_DO, 70, SE_PIKA_CHARGE_HIGH_DO, 80
 gIntroTreeckoShadowSpriteSet:: @ 0x0893EBEC
 .2byte 4
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=PAL_IX_6
@@ -3572,15 +3572,16 @@ gIntroScene8WailmerLaunch_SpriteSets:: @ 0x0893EED8
     .4byte gIntroWailmerStarLargeSpriteSet
 
 gIntroScene8WailmerLaunch_DebrisMovement:: @ 0x0893EF1C
-	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
+	@ struct IntroDebrisMovement: earlyVelX, earlyVelY, lateVelX, lateVelY, filler4, oamPriority
+	.byte  5,  2,  3,  1,  6, 1
 	.align 2,0
-	.byte 0x05, 0xFE, 0x03, 0xFF, 0x19, 0x02
+	.byte  5, -2,  3, -1, 25, 2
 	.align 2,0
-	.byte 0xFB, 0x02, 0xFD, 0x01, 0x28, 0x01
+	.byte -5,  2, -3,  1, 40, 1
 	.align 2,0
-	.byte 0xFE, 0x05, 0xFF, 0x03, 0x34, 0x02
+	.byte -2,  5, -1,  3, 52, 2
 	.align 2,0
-	.byte 0xFE, 0xFB, 0xFF, 0xFD, 0x34, 0x01
+	.byte -2, -5, -1, -3, 52, 1
 	.align 2,0
 	.byte 0, 0, 0, 0, 0, 0
 	.align 2, 0
@@ -4773,8 +4774,13 @@ gTitleMenuSaveRightCursorFlipperAnim1SpriteSet:: @ 0x08940BB0
 
 @ DeleteSaveConfirmationPopupDuplicate
 
-	.byte 0x01, 0x00, 0x00, 0x40, 0x00, 0x10, 0x4E, 0x41, 0x00, 0x00, 0x02, 0x00, 0xF0, 0x00, 0x14, 0x80
-	.byte 0x00, 0x23, 0x00, 0x00, 0xF0, 0x40, 0xD4, 0xC1, 0x98, 0x22, 0x00, 0x00
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=PAL_IX_4
+
+.2byte 2
+    packed_sprite_oaml x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=PAL_IX_2
+    packed_sprite_oaml x=-0x2C, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=PAL_IX_2
+
 gTitleMenuStateTable:: @ 0x08940BD6
 	.2byte STATE_GAME_MAIN
 	.2byte STATE_FIELD_SELECT
@@ -4789,16 +4795,17 @@ gTitleMenuStateTable:: @ 0x08940BD6
 	.2byte STATE_BONUS_FIELD_SELECT
 
 
-	.byte 0x0C, 0x00
+	.2byte STATE_LANGUAGE_SELECT
 gTitlePressStartAnimData:: @ 0x08940BEE
 	.byte 2, 20, 0, 5, 1, 20, 0, 5
 gTitleMenuSlideInAnimData:: @ 0x08940BF6
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
-	.byte 0x01, 0x05
-	.byte 0x03, 0x05
+	@ sprite group, duration
+	.byte 1, 5
+	.byte 3, 5
+	.byte 1, 5
+	.byte 3, 5
+	.byte 1, 5
+	.byte 3, 5
 
 
 	@Vector16 pairs
@@ -4834,7 +4841,7 @@ gTitleNoSaveMenuActions:: @ 0x08940C94
 @ .incbin "baserom.gba", 0x6A96DE, 0x6 @ 0x6A96E4 - 0x6A96DE
 @ Can't find code pointing to this... possibly part of the last array when testing?
 
-	.byte 0x0B, 0x00
+	.2byte 11
 gTitleSavedFlipperPositionsX:: @ 0x08940C9E
 	.2byte 80, 80, 82, 83, 82, 79, 144, 144
 	.2byte 142, 141, 142, 145, 72, 76, 81, 82
@@ -4847,7 +4854,7 @@ gTitleSavedFlipperPositionsX:: @ 0x08940C9E
 gTitleSavedFlipperPositionsY:: @ 0x08940D16
 	.2byte 42, 55, 68, 81, 94, 107
 gTitleSavedMenuActions:: @ 0x08940D22
-	.2byte 1, 0, 2, 3, 4, 11
+	.2byte MENU_ACTION_TYPE_FIELD_SELECT, MENU_ACTION_TYPE_CONTINUE_GAME, MENU_ACTION_TYPE_POKEDEX, MENU_ACTION_TYPE_OPTIONS, MENU_ACTION_TYPE_SCORES, 11
 gTitleSavedMenuButtonTileOffsets:: @ 0x08940D2E
 	.2byte 416, 2464, 4512, 6560, 8608, 736, 2048, 2048
 	.2byte 0
@@ -4908,7 +4915,7 @@ gTitleSavedAnimSprites:: @ 0x08940DC0
 	.4byte gUnknown_089407F2
 	.4byte gUnknown_08940924
 	.4byte gUnknown_08940A56
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gTitleMenuLeftFlipperSprites:: @ 0x08940DF8
 	.4byte gTitleMenuNoSaveLeftCursorFlipperAnim1SpriteSet
 	.4byte gTitleMenuNoSaveLeftCursorFlipperAnim0SpriteSet
@@ -9831,7 +9838,10 @@ gUnknown_08945AEE:: @ 0x08945AEE
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B, paletteNum=PAL_IX_1
 
 gUnknown_08945AF6:: @ 0x08945AF6
-	.byte 0x01, 0x00, 0x00, 0x40, 0x00, 0x00, 0x1D, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1D, paletteNum=PAL_IX_1
+
+	.4byte 0
 	.4byte gUnknown_08945B60
 	.4byte gUnknown_08945B68
 	.4byte gUnknown_08945B70
@@ -12175,7 +12185,7 @@ gModeBannerTilemaps:: @ 0x08948B80
 	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 
 gModeBannerTilemaps_Fr:: @ 0x08948BA0
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyChinchouCatchBurstBanner_Gfx
 	.4byte gMainCatchModeBanner_Gfx_Fr
 	.4byte gMainBoardEvoBanner_Gfx_Fr
@@ -12184,7 +12194,7 @@ gModeBannerTilemaps_Fr:: @ 0x08948BA0
 	.4byte gRubyLotadCatchBurstBanner_Gfx
 	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 gModeBannerTilemaps_It:: @ 0x08948BC0
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyChinchouCatchBurstBanner_Gfx
 	.4byte gMainCatchModeBanner_Gfx_It
 	.4byte gMainBoardEvoBanner_Gfx_It
@@ -12193,7 +12203,7 @@ gModeBannerTilemaps_It:: @ 0x08948BC0
 	.4byte gRubyLotadCatchBurstBanner_Gfx
 	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 gModeBannerTilemaps_De:: @ 0x08948BE0
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyChinchouCatchBurstBanner_Gfx
 	.4byte gMainCatchModeBanner_Gfx_De
 	.4byte gMainBoardEvoBanner_Gfx_De
@@ -12202,7 +12212,7 @@ gModeBannerTilemaps_De:: @ 0x08948BE0
 	.4byte gRubyLotadCatchBurstBanner_Gfx
 	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 gModeBannerTilemaps_Es:: @ 0x08948C00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyChinchouCatchBurstBanner_Gfx
 	.4byte gMainCatchModeBanner_Gfx_Es
 	.4byte gMainBoardEvoBanner_Gfx_Es
@@ -12257,7 +12267,7 @@ gCaughtTextChars_En:: @ 0x08948CE8
 gCaughtTextChars:: @ 0x08948CE8
 	.2byte 'W','A','S',' ','C','A','U','G','H','T';
 
-	.byte 0x20, 0x00
+	.2byte ' '
 gCaughtTextChars_Fr:: @ 0x08948CFE
 	.2byte 'E', 'S', 'T', ' ', 'A', 'T', 'T', 'R'
 	.2byte 'A', 'P', 'E'
@@ -12273,7 +12283,7 @@ gCaughtTextChars_Es:: @ 0x08948D40
 gCaptureShakeOffsets:: @ 0x08948D56
     .byte 0, 1, 2, 3, 1, 2, 4, 5, 1, 1, 6, 7
 
-	.byte 0x00, 0x00
+	.align 2, 0
 gShopItemData:: @ 0x08948D64
     @ 47 sets of data for roulette window display / shop data
     @ (See prize_definitions.h for index position meaning)
@@ -15164,19 +15174,19 @@ gRubyHoleIndicatorTilePointers_Fr:: @ 0x0894D4EC
 	.4byte gRubyHoleLightH_Off_Fr
 	.4byte gRubyHoleLightH_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightO_Off_Fr
 	.4byte gRubyHoleLightO_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightL_Off_Fr
 	.4byte gRubyHoleLightL_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightE_Off_Fr
 	.4byte gRubyHoleLightE_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gRubySaverTilePointers_Fr:: @ 0x0894D52C
 	.4byte gRubySaverRow0Tile_Off_Fr
 	.4byte gRubySaverRow1Tile_Off_Fr
@@ -15356,19 +15366,19 @@ gRubyHoleIndicatorTilePointers_It:: @ 0x0894D7C8
 	.4byte gRubyHoleLightH_Off_It
 	.4byte gRubyHoleLightH_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightO_Off_It
 	.4byte gRubyHoleLightO_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightL_Off_It
 	.4byte gRubyHoleLightL_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightE_Off_It
 	.4byte gRubyHoleLightE_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gRubySaverTilePointers_It:: @ 0x0894D808
 	.4byte gRubySaverRow0Tile_Off_It
 	.4byte gRubySaverRow1Tile_Off_It
@@ -15594,19 +15604,19 @@ gRubyHoleIndicatorTilePointers_De:: @ 0x0894DB58
 	.4byte gRubyHoleLightH_Off_De
 	.4byte gRubyHoleLightH_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightO_Off_De
 	.4byte gRubyHoleLightO_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightL_Off_De
 	.4byte gRubyHoleLightL_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightE_Off_De
 	.4byte gRubyHoleLightE_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gRubyHatchArrowTilePointer_De:: @ 0x0894DB98
 	.4byte gRubyHatchArrowRow0Tile_Off_De
 	.4byte gRubyHatchArrowRow1Tile_Off_De
@@ -15773,19 +15783,19 @@ gRubyHoleIndicatorTilePointers_Es:: @ 0x0894DE04
 	.4byte gRubyHoleLightH_Off_Es
 	.4byte gRubyHoleLightH_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightO_Off_Es
 	.4byte gRubyHoleLightO_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightL_Off_Es
 	.4byte gRubyHoleLightL_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gRubyHoleLightE_Off_Es
 	.4byte gRubyHoleLightE_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gRubySaverTilePointers_Es:: @ 0x0894DE44
 	.4byte gRubySaverRow0Tile_Off_Es
 	.4byte gRubySaverRow1Tile_Off_Es
@@ -16238,19 +16248,19 @@ gSapphireHoleIndicatorTilePtrs_Fr:: @ 0x0894E84C
 	.4byte gSapphireHoleLightH_Off_Fr
 	.4byte gSapphireHoleLightH_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightO_Off_Fr
 	.4byte gSapphireHoleLightO_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightL_Off_Fr
 	.4byte gSapphireHoleLightL_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightE_Off_Fr
 	.4byte gSapphireHoleLightE_On_Fr
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gSapphireSaverDisplayTilePtrs_Fr:: @ 0x0894E88C
 	.4byte gSapphireSaverRow0Tile_Off_Fr
 	.4byte gSapphireSaverRow1Tile_Off_Fr
@@ -16417,19 +16427,19 @@ gSapphireHoleIndicatorTilePtrs_It:: @ 0x0894EAF8
 	.4byte gSapphireHoleLightH_Off_It
 	.4byte gSapphireHoleLightH_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightO_Off_It
 	.4byte gSapphireHoleLightO_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightL_Off_It
 	.4byte gSapphireHoleLightL_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightE_Off_It
 	.4byte gSapphireHoleLightE_On_It
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gSapphireSaverDisplayTilePtrs_It:: @ 0x0894EB38
 	.4byte gSapphireSaverRow0Tile_Off_It
 	.4byte gSapphireSaverRow1Tile_Off_It
@@ -16642,19 +16652,19 @@ gSapphireHoleIndicatorTilePtrs_De:: @ 0x0894EE58
 	.4byte gSapphireHoleLightH_Off_De
 	.4byte gSapphireHoleLightH_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightO_Off_De
 	.4byte gSapphireHoleLightO_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightL_Off_De
 	.4byte gSapphireHoleLightL_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightE_Off_De
 	.4byte gSapphireHoleLightE_On_De
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gSapphireHatchArrowTilePtrs_De:: @ 0x0894EE98
 	.4byte gSapphireHatchArrow_R0_Off_De
 	.4byte gSapphireHatchArrow_R1_Off_De
@@ -16808,19 +16818,19 @@ gSapphireHoleIndicatorTilePtrs_Es:: @ 0x0894F0D4
 	.4byte gSapphireHoleLightH_Off_Es
 	.4byte gSapphireHoleLightH_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 3)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightO_Off_Es
 	.4byte gSapphireHoleLightO_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 6)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightL_Off_Es
 	.4byte gSapphireHoleLightL_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 22)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 	.4byte gSapphireHoleLightE_Off_Es
 	.4byte gSapphireHoleLightE_On_Es
 	.4byte BG_ADDR_FOR_BOARD_WRAP(42, 25)
-	.byte 0x00, 0x00, 0x00, 0x00
+	.4byte 0
 gSapphireSaverDisplayTilePtrs_Es:: @ 0x0894F114
 	.4byte gSapphireSaverRow0Tile_Off_Es
 	.4byte gSapphireSaverRow1Tile_Off_Es
@@ -24500,15 +24510,22 @@ gUnknown_089595CA:: @ 0x089595CA
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x94, paletteNum=PAL_IX_1
 
 gOptionsSpriteSet28_Fr:: @ 0x089595DE
-	.byte 0x02, 0x00, 0x00, 0x40, 0x00, 0x40, 0x23, 0x00, 0x00, 0x00, 0x00, 0x40, 0x20, 0x40, 0x2B, 0x00
-	.byte 0x00, 0x00
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x23, paletteNum=PAL_IX_0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2B, paletteNum=PAL_IX_0
+
 gOptionsSpriteSet28_It:: @ 0x089595F0
-	.byte 0x04, 0x00, 0x00, 0x40, 0x00, 0x40, 0x23, 0x00, 0x00, 0x00, 0x00, 0x40, 0x20, 0x00, 0x27, 0x00
-	.byte 0x00, 0x00, 0x00, 0x40, 0x30, 0x00, 0x2B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x2D, 0x00
-	.byte 0x00, 0x00
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x23, paletteNum=PAL_IX_0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27, paletteNum=PAL_IX_0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2B, paletteNum=PAL_IX_0
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2D, paletteNum=PAL_IX_0
+
 gOptionsSpriteSet28_Es:: @ 0x08959612
-	.byte 0x02, 0x00, 0x00, 0x40, 0x00, 0x40, 0x23, 0x00, 0x00, 0x00, 0x00, 0x40, 0x20, 0x00, 0x27, 0x00
-	.byte 0x00, 0x00
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x23, paletteNum=PAL_IX_0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27, paletteNum=PAL_IX_0
+
 gButtonInfoTable:: @ 0x08959624
 	.2byte A_BUTTON, 0x4
     .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
@@ -24843,7 +24860,7 @@ gUnknown_086BBCAC:: @ 0x089599C0
 
 @ rom end 0x6BBFD0
 
-	.byte 0x12, 0x00, 0x22, 0x00, 0x12, 0x00
+	.include "data/eu/src/options_unused_anim_tail.inc"
 	.4byte gUnknown_08959A60
 	.4byte gUnknown_08959A68
 	.4byte gUnknown_08959A70
@@ -25428,27 +25445,7 @@ gUnknown_0895A034:: @ 0x0895A034
     packed_sprite_oam x=-0x1, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=PAL_IX_1
 
 gUnknown_0895A03C:: @ 0x0895A03C
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x40, 0x94, 0x10, 0x02, 0x00, 0x0A, 0x00, 0x08, 0x00, 0x0B, 0x00
-	.byte 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x02, 0x00, 0x17, 0x00, 0x18, 0x00, 0x18, 0x00
-	.byte 0x08, 0x00, 0x01, 0x00, 0x0C, 0x00, 0x04, 0x00, 0x02, 0x00, 0x19, 0x00, 0x09, 0x00, 0x1A, 0x00
-	.byte 0x09, 0x00, 0x02, 0x00, 0x1C, 0x00, 0x12, 0x00, 0x1D, 0x00, 0x12, 0x00, 0x0D, 0x00, 0x1E, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1E, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1E, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1D, 0x00
-	.byte 0x1E, 0x00, 0x02, 0x00, 0x21, 0x00, 0x12, 0x00, 0x22, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x80
-	.byte 0x40, 0x20, 0x20, 0x40, 0x00, 0x80, 0xC0, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x44, 0x20
-	.byte 0x20, 0x40, 0x00, 0x80, 0xC4, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x48, 0x20, 0x20, 0x40
-	.byte 0x00, 0x80, 0xC8, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x4C, 0x20, 0x20, 0x40, 0x00, 0x80
-	.byte 0xCC, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x50, 0x20, 0x20, 0x40, 0x00, 0x80, 0xD0, 0x20
-	.byte 0x01, 0x00, 0xFF, 0x00, 0xFF, 0x41, 0x54, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x40, 0x94, 0x10
-	.byte 0x02, 0x00, 0x0A, 0x00, 0x08, 0x00, 0x0B, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00
-	.byte 0x02, 0x00, 0x17, 0x00, 0x18, 0x00, 0x18, 0x00, 0x08, 0x00, 0x01, 0x00, 0x0C, 0x00, 0x04, 0x00
-	.byte 0x02, 0x00, 0x19, 0x00, 0x09, 0x00, 0x1A, 0x00, 0x09, 0x00, 0x02, 0x00, 0x1C, 0x00, 0x12, 0x00
-	.byte 0x1D, 0x00, 0x12, 0x00, 0x0D, 0x00, 0x1E, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1E, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1E, 0x00, 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x20, 0x00
-	.byte 0x02, 0x00, 0x1F, 0x00, 0x01, 0x00, 0x1D, 0x00, 0x1E, 0x00, 0x02, 0x00, 0x21, 0x00, 0x12, 0x00
-	.byte 0x22, 0x00, 0x12, 0x00
+	.include "data/eu/src/options_unused_sprite_copy.inc"
 	.4byte gUnknown_0895A20C
 	.4byte gUnknown_0895A214
 	.4byte gUnknown_0895A21C

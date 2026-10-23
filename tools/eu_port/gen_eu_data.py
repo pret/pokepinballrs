@@ -300,7 +300,8 @@ def parses_as_sprite_set(a, b):
     found = {}
     for size in (8, 6):
         end, n = sprite_sets_end(a, b, size)
-        found[size] = n if end == b else 0
+        # the sets fill the block, or are followed by zero bytes (padding, a null table entry)
+        found[size] = n if end == b or (b - end < 8 and not any(EU[end - 0x08000000:b - 0x08000000])) else 0
     for size in (8, 6):
         if found[size] == 1:
             return size
@@ -357,6 +358,15 @@ _sprite_runs()
 print('EU-only sprite sets found from pointer tables:', len(SPRITE_TARGETS))
 
 
+# labels declared as sprite sets in the C code (extern const struct SpriteSet name;)
+SPRITESET_DECLS = set()
+for root_, _, files_ in os.walk(REPO + '/src'):
+    for f_ in files_:
+        if f_.endswith('.c'):
+            SPRITESET_DECLS.update(re.findall(r'\bextern\s+const\s+struct\s+SpriteSet\s+(\w+)\s*;',
+                                              open(os.path.join(root_, f_), encoding='utf-8', errors='replace').read()))
+
+
 def sprite_set_lines(x, y, labels):
     """Lines of the sprite set(s) at x if one of the labels names a US sprite set or an EU-only
     one found in a pointer table, and where they end (before y and the first pointer)."""
@@ -366,10 +376,19 @@ def sprite_set_lines(x, y, labels):
             spec = us_sprite_set(n)
         elif n in SPRITE_TARGETS:
             spec = (SPRITE_TARGETS[n], {})
+        elif n in SPRITESET_DECLS:
+            size_ = parses_as_sprite_set(x, data_end(x, y))
+            if size_:
+                spec = (size_, {})
     y = data_end(x, y)
     if spec is None or y == x:
         return None
     size, pals = spec
+    end, n = sprite_sets_end(x, y, size)
+    if n and end < y and y - end < 8 and not any(EU[end - 0x08000000:y - 0x08000000]):
+        lines_ = oam_lines(x, end, size, pals)  # followed by zero bytes, written by the caller
+        if lines_ is not None:
+            return lines_, end
     lines_ = oam_lines(x, y, size, pals)
     if lines_ is None:
         # one sprite set, then animations (unused copies of the sprite data)
@@ -467,8 +486,9 @@ VRAM_NAMES = _vram_names()
 
 
 def _us_word_exprs():
-    """Values of the non-symbol .4byte expressions of data/rom_2.s (e.g. BG_ADDR_FOR_BOARD_WRAP(31, 23)),
-    evaluated for EU: {label: {value: expression}} and {value: expression} when only one."""
+    """Values of the non-symbol .byte/.2byte/.4byte expressions of data/rom_2.s (e.g.
+    BG_ADDR_FOR_BOARD_WRAP(31, 23), STATE_TITLE), evaluated for EU as 32-bit words:
+    {label: {value: expression}} and {value: expression} when only one."""
     import tempfile
     text = open(REPO + '/data/rom_2.s', encoding='utf-8').read()
     headers = re.findall(r'^#include .*$', text, re.M)
@@ -478,8 +498,8 @@ def _us_word_exprs():
         if m:
             label = m.group(1)
             continue
-        m = re.match(r'^\s*\.4byte\s+(.*?)\s*(?:@.*)?$', ln)
-        if not m or label is None:
+        m = re.match(r'^\s*\.[24]?byte\s+(.*?)\s*;?\s*(?:@.*)?$', ln)
+        if not m or label is None or "'" in m.group(1):
             continue
         args, depth, cur = [], 0, ''
         for c in m.group(1):
@@ -492,24 +512,58 @@ def _us_word_exprs():
         exprs += [(label, a) for a in args if a and not re.match(r'^[a-z_]\w*$|^g\w*$|^0x[0-9A-Fa-f]+$|^\d+$', a)]
     uniq = sorted(set(e for _, e in exprs))
     d = tempfile.mkdtemp()
-    open(d + '/e.S', 'w', newline='\n').write('\n'.join(headers + ['.4byte %s' % e for e in uniq]) + '\n')
+    # each expression after a label of its own: only those that give exactly one word are kept
+    # (some macros expand to several values)
+    src = headers + ['expr_%d: .4byte %s' % (i, e) for i, e in enumerate(uniq)] + ['expr_end:']
+    open(d + '/e.S', 'w', newline='\n').write('\n'.join(src) + '\n')
     pre = subprocess.run(['arm-none-eabi-cpp', '-I', 'tools/agbcc/include', '-iquote', 'include', '-nostdinc',
                           '-undef', '-DEUROPE', '-P', d + '/e.S'], cwd=REPO, capture_output=True, text=True).stdout
-    words_ = [l for l in pre.split('\n') if l.startswith('.4byte')]
-    if len(words_) != len(uniq):
-        return {}, {}
-    open(d + '/e.s', 'w', newline='\n').write('\n'.join(words_) + '\n')
+    open(d + '/e.s', 'w', newline='\n').write(
+        '\n'.join(l for l in pre.split('\n') if l.startswith('expr_')) + '\n')
     if subprocess.run(['arm-none-eabi-as', '-o', d + '/e.o', d + '/e.s']).returncode:
         return {}, {}
     subprocess.check_call(['arm-none-eabi-objcopy', '-O', 'binary', '-j', '.text', d + '/e.o', d + '/e.bin'])
     data = open(d + '/e.bin', 'rb').read()
-    value = dict(zip(uniq, struct.unpack('<%dI' % (len(data) // 4), data)))
+    offs = {}
+    for l in subprocess.run(['arm-none-eabi-nm', d + '/e.o'], capture_output=True, text=True).stdout.splitlines():
+        p_ = l.split()
+        if len(p_) == 3 and p_[2].startswith('expr_'):
+            offs[p_[2]] = int(p_[0], 16)
+    value = {}
+    for i, e in enumerate(uniq):
+        a_, b_ = offs.get('expr_%d' % i), offs.get('expr_%d' % (i + 1), offs.get('expr_end'))
+        if a_ is not None and b_ is not None and b_ - a_ == 4:
+            value[e] = struct.unpack_from('<I', data, a_)[0]
+    exprs = [(lab, e) for lab, e in exprs if e in value]
     by_table, by_value = collections.defaultdict(dict), collections.defaultdict(set)
     for lab, e in exprs:
         by_table[lab].setdefault(value[e], e)
         by_value[value[e]].add(e)
     return by_table, {v: next(iter(es)) for v, es in by_value.items() if len(es) == 1}
 US_WORD_EXPRS, US_WORD_EXPR = _us_word_exprs()
+
+# Numeric #define constants of include/, and the prefix shared by the constants a US table uses
+# (STATE_, MENU_ACTION_TYPE_, ...): a value that the US table does not have is written with the
+# constant of the same family, if there is only one.
+NUM_DEFINES = {}
+for root_, _, files_ in os.walk(REPO + '/include'):
+    for f_ in files_:
+        if f_.endswith('.h'):
+            for m_ in re.finditer(r'^#define\s+([A-Z][A-Z0-9_]*)\s+(0x[0-9A-Fa-f]+|\d+)\s*(?://.*)?$',
+                                  open(os.path.join(root_, f_), encoding='utf-8', errors='replace').read(), re.M):
+                NUM_DEFINES.setdefault(m_.group(1), int(m_.group(2), 0))
+
+
+def family_name(base, v):
+    names = [e for e in US_WORD_EXPRS.get(base, {}).values() if re.match(r'^[A-Z][A-Z0-9_]*$', e)]
+    if len(names) < 2:
+        return None
+    prefix = os.path.commonprefix(names)
+    prefix = prefix[:prefix.rfind('_') + 1]
+    if not prefix:
+        return None
+    found = [n for n, x in NUM_DEFINES.items() if n.startswith(prefix) and x == v]
+    return found[0] if len(found) == 1 else None
 
 
 def word_text(v, label):
@@ -540,7 +594,11 @@ def typed_lines(x, y, labels):
         return None
     vals = struct.unpack_from('<%d%s' % (n, fmt), EU, x - 0x08000000)
     per = 16 // size
-    show = str
+    exprs = US_WORD_EXPRS.get(base, {})
+
+    def show(v):
+        # the expression of the US table with that value, a constant of the same family, or v
+        return exprs.get(v & 0xFFFFFFFF) or family_name(base, v) or str(v)
     if base in CHAR_TABLES and all(0x20 <= v < 0x7F and chr(v) not in "'\\" for v in vals):
         show = lambda v: "'%s'" % chr(v)
     out_ = ['\t%s %s' % (directive, ', '.join(show(v) for v in vals[i:i + per])) for i in range(0, n, per)]
@@ -669,13 +727,18 @@ def gen_file(src, obj, name):
                 continue
             data = EU[x - 0x08000000:y - 0x08000000]
             if obj in PTR_OBJS:
+                if not any(data) and y % 4 == 0 and y - x < 4:
+                    out.append(('gen', '\t.align 2, 0'))  # padding before an aligned item
+                    continue
                 q = x
-                spr = sprite_set_lines(x, y, by_addr.get(x, []))
+                # a gap without a label of its own continues the item before it (a longer EU table)
+                labels_x = by_addr.get(x) or ([next(reversed(ALL_LABELS))] if ALL_LABELS else [])
+                spr = sprite_set_lines(x, y, labels_x)
                 if spr is not None:
                     out.extend(('gen', l_) for l_ in spr[0])
                     q = spr[1]
                 else:
-                    typed = typed_lines(x, y, by_addr.get(x, []))
+                    typed = typed_lines(x, y, labels_x)
                     if typed is not None:
                         out.extend(('gen', l_) for l_ in typed)
                         continue
@@ -687,6 +750,12 @@ def gen_file(src, obj, name):
                 while q < y:
                     if q in PTRS and q + 4 <= y:
                         flush(); out.append(('gen', f'\t.4byte {PTRS[q]}')); q += 4
+                    elif q % 4 == 0 and q + 4 <= y and not any(EU[q - 0x08000000:q - 0x08000000 + 4]) \
+                            and (q - 4 in PTRS or q + 4 in PTRS or q + 4 == y or
+                                 (out and out[-1][0] == 'gen' and out[-1][1].startswith('\t.4byte'))):
+                        flush(); out.append(('gen', '\t.4byte 0')); q += 4  # null entry of a table
+                    elif not buf and not any(EU[q - 0x08000000:y - 0x08000000]) and y % 4 == 0 and y - q < 4:
+                        out.append(('gen', '\t.align 2, 0')); q = y  # padding after a written item
                     elif q % 4 == 0 and q + 4 <= y and 0x06000000 <= struct.unpack_from('<I', EU, q - 0x08000000)[0] < 0x06018000:
                         v = struct.unpack_from('<I', EU, q - 0x08000000)[0]
                         label = next(reversed(ALL_LABELS)) if ALL_LABELS else None
@@ -703,8 +772,13 @@ def gen_file(src, obj, name):
                 open(REPO + '/' + fn, 'wb').write(data)
                 out.append(('gen', f'\t.incbin "{fn}"'))
             else:
-                for i in range(0, len(data), 16):
-                    out.append(('gen', '\t.byte ' + ', '.join('0x%02X' % c for c in data[i:i + 16])))
+                words_ = struct.unpack('<%dI' % (len(data) // 4), data) if x % 4 == 0 and len(data) % 4 == 0 else ()
+                if words_ and all((w & 1) and (w & ~1) in FUNCS for w in words_):
+                    # a table of Thumb function pointers (e.g. state functions of an EU-only screen)
+                    out.extend(('gen', '\t.4byte ' + FUNCS[w & ~1]) for w in words_)
+                else:
+                    for i in range(0, len(data), 16):
+                        out.append(('gen', '\t.byte ' + ', '.join('0x%02X' % c for c in data[i:i + 16])))
         cursor = b
     warn = []
     cur_region = None
