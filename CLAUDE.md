@@ -41,10 +41,15 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
   Nessun dato EU resta come blob binario (`data/eu/bin/` è vuota) né come righe `.byte` anonime:
   le righe `.byte` rimaste sono tabelle con etichetta e tipo della dichiarazione C o USA.
   La coda della ROM (0x08FE0000, 16 KB, mai referenziata) è disassemblata in
-  `data/eu/rom_tail.s` da `disasm_rom_tail.py`: uno strumento di sviluppo (probabilmente un
-  debug monitor) con una parte residente (primi 4 KB) collegata a 0x09FE2000 e tre overlay
-  (le pagine da 4 KB successive) collegati tutti a 0x09FE3000, ognuno con una tabella di punti
-  d'ingresso all'inizio; i puntatori 0x09FE3xxx di un overlay puntano all'overlay stesso.
+  `data/eu/rom_tail.s` da `disasm_rom_tail.py`: un debug monitor per l'hardware di sviluppo,
+  collegato per girare dalla memoria di una DACS da 1 Mbit (0x09FE0000). 0x09FE2000 è il gestore
+  di debug del BIOS (FIQ e istruzione non definita, se i bit 2 e 7 del byte 0x9C dell'header
+  sono attivi); il monitor salva lo stato del gioco ed esegue i comandi che l'host scrive in
+  `MonCommandBlock` (memoria, passo singolo con un breakpoint fatto di un'istruzione non
+  definita, ripresa, reset, flash, riempimento, chiamate al gioco). Parte residente (primi 4 KB)
+  a 0x09FE2000 e tre overlay (le pagine da 4 KB successive) tutti a 0x09FE3000, scelti dal
+  registro di controllo a 0x09FE2FFE; ognuno inizia con una tabella di punti d'ingresso e i suoi
+  puntatori 0x09FE3xxx puntano all'overlay stesso.
   Le copie per lingua dei dati sprite non usati (regioni `gSpriteSetRawDup_`
   USA, mai referenziate dal codice) sono scritte come sprite set seguiti da animazioni: contatore
   e coppie (fotogramma, durata). In USA la stessa struttura è scritta, a torto, come sprite set
@@ -138,8 +143,10 @@ Su Windows (MSYS2) usare il `jq` di msys, non quello mingw (scrive CRLF e rompe
   voce: anche un abbinamento sbagliato supera il giro inverso e il confronto della ROM.
 - `dump_dex_eu.py`, `dump_ereader_eu.py`, `dump_tables_eu.py`: riscrivono dalla ROM EU il Pokédex,
   i testi e-Reader e le tabelle in `data/eu/src/`.
-- `disasm_rom_tail.py`: riscrive `data/eu/rom_tail.s` (discesa ricorsiva ARM/Thumb con capstone,
-  etichette col nome dell'indirizzo di esecuzione, indirizzi come `label - RES/OV1/OV2/OV3`) e
+- `disasm_rom_tail.py`: riscrive `data/eu/rom_tail.s` (discesa ricorsiva ARM/Thumb con capstone;
+  nomi e commenti da `NAMES` e `COMMENTS`, riferimenti dentro i dati di `DATA_REGIONS` come
+  `nome + offset`, le altre etichette col nome dell'indirizzo di esecuzione; indirizzi come
+  `label - RES/OV1/OV2/OV3`) e
   lo verifica riassemblandolo come il Makefile (preproc, cpp, as); un'istruzione che as codifica
   diversamente diventerebbe `.inst` (oggi nessuna). Il codice non raggiunto è in `EXTRA_CODE`;
   `-l INIZIO FINE` stampa la classificazione. Richiede binutils e cpp arm-none-eabi nel PATH.
@@ -161,5 +168,3 @@ Attenzione: `data/eu/*.s` sono generati; modificarli a mano va bene solo se poi 
    match vanno poi riletti per trovare il costrutto naturale equivalente.
 2. Riscrivere anche nel sorgente USA le regioni `Dup` come sprite set + animazioni (byte
    identici; oggi sono scritte come sprite set fittizi).
-3. Dare nomi significativi a funzioni e dati dello strumento in `data/eu/rom_tail.s` (oggi hanno
-   il nome dell'indirizzo di esecuzione): andrebbero in una tabella del generatore.

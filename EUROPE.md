@@ -19,7 +19,7 @@ tree builds both games:
 - **Data: the European data is in source form.** Graphics are PNG/palette files, texts and
   tables are assembler source, and pointers are symbolic. No binary blob and no anonymous
   `.byte` line is left. The 16 KB block at `0x08FE0000` that the game never references, a
-  development tool, is disassembled to ARM/Thumb assembly (see *The block at the end of the ROM*).
+  debug monitor, is disassembled to ARM/Thumb assembly (see *The block at the end of the ROM*).
 
 ## Building
 
@@ -99,22 +99,33 @@ These are the differences found while porting:
 ### The block at the end of the ROM
 
 The European ROM is 16 MiB. After the game data, it has a 16 KB block at `0x08FE0000` that the
-game never references, then `0xFF` padding and 2 KB of zeros. The block is a development tool,
-probably a debug monitor: it saves the registers of every CPU mode and uses the interrupt, wait
-state and serial (`RCNT`) registers. It was linked to run near the end of a 32 MiB cartridge,
-not where it sits in this ROM:
+game never references, then `0xFF` padding and 2 KB of zeros. The block is a debug monitor for
+the development hardware. It was linked to run from the memory of a 1 Mbit DACS at
+`0x09FE0000`, not from where it sits in this ROM:
 
-- a resident part (the first 4 KB) runs at `0x09FE2000`. ARM branches at its start jump to a
-  stub that calls the Thumb code;
-- three overlays (the following 4 KB pages) all run at `0x09FE3000`. Each starts with a table of
-  entry points, and its pointers into `0x09FE3xxx` refer to itself.
+- `0x09FE2000` is the debugging handler of the BIOS. When bits 2 and 7 of the header byte at
+  `0x0800009C` are set, the BIOS forwards the FIQ and undefined instruction exceptions there.
+  The monitor sets that byte to `0xA5` when it resumes the game, and restores the original byte
+  at the next exception;
+- it saves the state of the game (the registers of every CPU mode, DMA, WAITCNT, IME), then
+  runs the commands that a host writes to a shared block (`MonCommandBlock`). The 11 commands
+  are: read or write memory through a buffer, single step, resume, reset the game, identify,
+  erase and program the flash memory, fill memory, and call functions of the game. A single
+  step replaces the next instruction with an undefined one; the monitor computes the address
+  of that instruction by decoding ARM and Thumb branches and conditions;
+- a resident part (the first 4 KB) runs at `0x09FE2000`. Three overlays (the following 4 KB
+  pages) all run at `0x09FE3000`: a control register at `0x09FE2FFE` selects the page shown
+  there. Each overlay starts with a table of entry points, and its pointers into `0x09FE3xxx`
+  refer to itself.
 
 `tools/eu_port/disasm_rom_tail.py` disassembles it to `data/eu/rom_tail.s` with capstone,
 following branches, code pointers, literal pools, gcc switch tables and function prologues.
-Labels are named after their run address, and the run-time addresses stored in the block are
-written as `label - RES` (or `OV1`, `OV2`, `OV3`). The script checks the file by assembling it the
-way the Makefile does: all 2,460 instructions assemble back to the original bytes, so none of
-them needs `.inst`.
+Functions and data have names and short comments based on what the code does (`MonException`,
+`MonCommandLoop`, `MonCmd2_TransferMemory`, `MonOv1_NextArmPc`, …). The other labels are named
+after their run address, and the run-time addresses stored in the block are written as
+`label - RES` (or `OV1`, `OV2`, `OV3`). The script checks the file by assembling it the way the
+Makefile does: all 2,460 instructions assemble back to the original bytes, so none of them
+needs `.inst`.
 
 ### Text encoding (`tools/preproc`)
 
@@ -171,8 +182,6 @@ agbcc projects:
 ## Remaining work
 
 - Find the original construct behind the fake match in `RestoreMainFieldDynamicGraphics`.
-- Give meaningful names to the functions and data of the development tool at the end of the ROM
-  (they are named after their addresses).
 - The US source writes the unused copies of the sprite data (`gSpriteSetRawDup_*`,
   `gPackedOamDup_*`, `gUnusedSpriteSets_*`) as sprite sets. They are actually sprite sets
   followed by animations (a frame count, then frame/duration pairs), as they are now written in
