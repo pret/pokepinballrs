@@ -36,7 +36,7 @@ jobs:
           xdelta3 -d -s zero.gba baserom.xdelta baserom.gba
 
       - name: Build pokepinballrs
-        run: make -j$(nproc)\
+        run: make -j"$(nproc)"
 
       - name: Webhook
         if: ${{ github.event_name == 'push' && github.repository_owner == 'pret' }}

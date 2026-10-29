@@ -15,7 +15,7 @@ void ClearBG0Tilemap(void)
 {
     s16 i;
 
-    for (i = 0; i < 0x800; i++)
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(64,0); i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_LAYER_0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
